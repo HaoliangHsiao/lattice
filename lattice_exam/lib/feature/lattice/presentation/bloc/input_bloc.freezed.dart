@@ -14,18 +14,9 @@ class _$InputEventTearOff {
   const _$InputEventTearOff();
 
 // ignore: unused_element
-  _Init init(int maxCol, int maxRow) {
+  _Init init(Size screenSize) {
     return _Init(
-      maxCol,
-      maxRow,
-    );
-  }
-
-// ignore: unused_element
-  _Build build(int column, int row) {
-    return _Build(
-      column,
-      row,
+      screenSize,
     );
   }
 }
@@ -36,28 +27,28 @@ const $InputEvent = _$InputEventTearOff();
 
 /// @nodoc
 mixin _$InputEvent {
+  Size get screenSize;
+
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result init(int maxCol, int maxRow),
-    @required Result build(int column, int row),
+    @required Result init(Size screenSize),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result init(int maxCol, int maxRow),
-    Result build(int column, int row),
+    Result init(Size screenSize),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result init(_Init value),
-    @required Result build(_Build value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result init(_Init value),
-    Result build(_Build value),
     @required Result orElse(),
   });
+
+  $InputEventCopyWith<InputEvent> get copyWith;
 }
 
 /// @nodoc
@@ -65,6 +56,7 @@ abstract class $InputEventCopyWith<$Res> {
   factory $InputEventCopyWith(
           InputEvent value, $Res Function(InputEvent) then) =
       _$InputEventCopyWithImpl<$Res>;
+  $Res call({Size screenSize});
 }
 
 /// @nodoc
@@ -74,13 +66,24 @@ class _$InputEventCopyWithImpl<$Res> implements $InputEventCopyWith<$Res> {
   final InputEvent _value;
   // ignore: unused_field
   final $Res Function(InputEvent) _then;
+
+  @override
+  $Res call({
+    Object screenSize = freezed,
+  }) {
+    return _then(_value.copyWith(
+      screenSize:
+          screenSize == freezed ? _value.screenSize : screenSize as Size,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$InitCopyWith<$Res> {
+abstract class _$InitCopyWith<$Res> implements $InputEventCopyWith<$Res> {
   factory _$InitCopyWith(_Init value, $Res Function(_Init) then) =
       __$InitCopyWithImpl<$Res>;
-  $Res call({int maxCol, int maxRow});
+  @override
+  $Res call({Size screenSize});
 }
 
 /// @nodoc
@@ -94,47 +97,38 @@ class __$InitCopyWithImpl<$Res> extends _$InputEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object maxCol = freezed,
-    Object maxRow = freezed,
+    Object screenSize = freezed,
   }) {
     return _then(_Init(
-      maxCol == freezed ? _value.maxCol : maxCol as int,
-      maxRow == freezed ? _value.maxRow : maxRow as int,
+      screenSize == freezed ? _value.screenSize : screenSize as Size,
     ));
   }
 }
 
 /// @nodoc
 class _$_Init implements _Init {
-  const _$_Init(this.maxCol, this.maxRow)
-      : assert(maxCol != null),
-        assert(maxRow != null);
+  const _$_Init(this.screenSize) : assert(screenSize != null);
 
   @override
-  final int maxCol;
-  @override
-  final int maxRow;
+  final Size screenSize;
 
   @override
   String toString() {
-    return 'InputEvent.init(maxCol: $maxCol, maxRow: $maxRow)';
+    return 'InputEvent.init(screenSize: $screenSize)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Init &&
-            (identical(other.maxCol, maxCol) ||
-                const DeepCollectionEquality().equals(other.maxCol, maxCol)) &&
-            (identical(other.maxRow, maxRow) ||
-                const DeepCollectionEquality().equals(other.maxRow, maxRow)));
+            (identical(other.screenSize, screenSize) ||
+                const DeepCollectionEquality()
+                    .equals(other.screenSize, screenSize)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(maxCol) ^
-      const DeepCollectionEquality().hash(maxRow);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(screenSize);
 
   @override
   _$InitCopyWith<_Init> get copyWith =>
@@ -143,24 +137,21 @@ class _$_Init implements _Init {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result init(int maxCol, int maxRow),
-    @required Result build(int column, int row),
+    @required Result init(Size screenSize),
   }) {
     assert(init != null);
-    assert(build != null);
-    return init(maxCol, maxRow);
+    return init(screenSize);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result init(int maxCol, int maxRow),
-    Result build(int column, int row),
+    Result init(Size screenSize),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (init != null) {
-      return init(maxCol, maxRow);
+      return init(screenSize);
     }
     return orElse();
   }
@@ -169,10 +160,8 @@ class _$_Init implements _Init {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result init(_Init value),
-    @required Result build(_Build value),
   }) {
     assert(init != null);
-    assert(build != null);
     return init(this);
   }
 
@@ -180,7 +169,6 @@ class _$_Init implements _Init {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result init(_Init value),
-    Result build(_Build value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -192,134 +180,12 @@ class _$_Init implements _Init {
 }
 
 abstract class _Init implements InputEvent {
-  const factory _Init(int maxCol, int maxRow) = _$_Init;
+  const factory _Init(Size screenSize) = _$_Init;
 
-  int get maxCol;
-  int get maxRow;
+  @override
+  Size get screenSize;
+  @override
   _$InitCopyWith<_Init> get copyWith;
-}
-
-/// @nodoc
-abstract class _$BuildCopyWith<$Res> {
-  factory _$BuildCopyWith(_Build value, $Res Function(_Build) then) =
-      __$BuildCopyWithImpl<$Res>;
-  $Res call({int column, int row});
-}
-
-/// @nodoc
-class __$BuildCopyWithImpl<$Res> extends _$InputEventCopyWithImpl<$Res>
-    implements _$BuildCopyWith<$Res> {
-  __$BuildCopyWithImpl(_Build _value, $Res Function(_Build) _then)
-      : super(_value, (v) => _then(v as _Build));
-
-  @override
-  _Build get _value => super._value as _Build;
-
-  @override
-  $Res call({
-    Object column = freezed,
-    Object row = freezed,
-  }) {
-    return _then(_Build(
-      column == freezed ? _value.column : column as int,
-      row == freezed ? _value.row : row as int,
-    ));
-  }
-}
-
-/// @nodoc
-class _$_Build implements _Build {
-  const _$_Build(this.column, this.row)
-      : assert(column != null),
-        assert(row != null);
-
-  @override
-  final int column;
-  @override
-  final int row;
-
-  @override
-  String toString() {
-    return 'InputEvent.build(column: $column, row: $row)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _Build &&
-            (identical(other.column, column) ||
-                const DeepCollectionEquality().equals(other.column, column)) &&
-            (identical(other.row, row) ||
-                const DeepCollectionEquality().equals(other.row, row)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(column) ^
-      const DeepCollectionEquality().hash(row);
-
-  @override
-  _$BuildCopyWith<_Build> get copyWith =>
-      __$BuildCopyWithImpl<_Build>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result init(int maxCol, int maxRow),
-    @required Result build(int column, int row),
-  }) {
-    assert(init != null);
-    assert(build != null);
-    return build(column, row);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result init(int maxCol, int maxRow),
-    Result build(int column, int row),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (build != null) {
-      return build(column, row);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result init(_Init value),
-    @required Result build(_Build value),
-  }) {
-    assert(init != null);
-    assert(build != null);
-    return build(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result init(_Init value),
-    Result build(_Build value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (build != null) {
-      return build(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Build implements InputEvent {
-  const factory _Build(int column, int row) = _$_Build;
-
-  int get column;
-  int get row;
-  _$BuildCopyWith<_Build> get copyWith;
 }
 
 /// @nodoc
@@ -329,11 +195,6 @@ class _$InputStateTearOff {
 // ignore: unused_element
   _InitState init() {
     return const _InitState();
-  }
-
-// ignore: unused_element
-  _Loading loading() {
-    return const _Loading();
   }
 
 // ignore: unused_element
@@ -354,26 +215,22 @@ mixin _$InputState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result init(),
-    @required Result loading(),
     @required Result ready(int maxColumn, int maxRow),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result init(),
-    Result loading(),
     Result ready(int maxColumn, int maxRow),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result init(_InitState value),
-    @required Result loading(_Loading value),
     @required Result ready(_Ready value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result init(_InitState value),
-    Result loading(_Loading value),
     Result ready(_Ready value),
     @required Result orElse(),
   });
@@ -433,11 +290,9 @@ class _$_InitState implements _InitState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result init(),
-    @required Result loading(),
     @required Result ready(int maxColumn, int maxRow),
   }) {
     assert(init != null);
-    assert(loading != null);
     assert(ready != null);
     return init();
   }
@@ -446,7 +301,6 @@ class _$_InitState implements _InitState {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result init(),
-    Result loading(),
     Result ready(int maxColumn, int maxRow),
     @required Result orElse(),
   }) {
@@ -461,11 +315,9 @@ class _$_InitState implements _InitState {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result init(_InitState value),
-    @required Result loading(_Loading value),
     @required Result ready(_Ready value),
   }) {
     assert(init != null);
-    assert(loading != null);
     assert(ready != null);
     return init(this);
   }
@@ -474,7 +326,6 @@ class _$_InitState implements _InitState {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result init(_InitState value),
-    Result loading(_Loading value),
     Result ready(_Ready value),
     @required Result orElse(),
   }) {
@@ -488,100 +339,6 @@ class _$_InitState implements _InitState {
 
 abstract class _InitState implements InputState {
   const factory _InitState() = _$_InitState;
-}
-
-/// @nodoc
-abstract class _$LoadingCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
-      __$LoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$InputStateCopyWithImpl<$Res>
-    implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
-      : super(_value, (v) => _then(v as _Loading));
-
-  @override
-  _Loading get _value => super._value as _Loading;
-}
-
-/// @nodoc
-class _$_Loading implements _Loading {
-  const _$_Loading();
-
-  @override
-  String toString() {
-    return 'InputState.loading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Loading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result init(),
-    @required Result loading(),
-    @required Result ready(int maxColumn, int maxRow),
-  }) {
-    assert(init != null);
-    assert(loading != null);
-    assert(ready != null);
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result init(),
-    Result loading(),
-    Result ready(int maxColumn, int maxRow),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result init(_InitState value),
-    @required Result loading(_Loading value),
-    @required Result ready(_Ready value),
-  }) {
-    assert(init != null);
-    assert(loading != null);
-    assert(ready != null);
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result init(_InitState value),
-    Result loading(_Loading value),
-    Result ready(_Ready value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading implements InputState {
-  const factory _Loading() = _$_Loading;
 }
 
 /// @nodoc
@@ -653,11 +410,9 @@ class _$_Ready implements _Ready {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result init(),
-    @required Result loading(),
     @required Result ready(int maxColumn, int maxRow),
   }) {
     assert(init != null);
-    assert(loading != null);
     assert(ready != null);
     return ready(maxColumn, maxRow);
   }
@@ -666,7 +421,6 @@ class _$_Ready implements _Ready {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result init(),
-    Result loading(),
     Result ready(int maxColumn, int maxRow),
     @required Result orElse(),
   }) {
@@ -681,11 +435,9 @@ class _$_Ready implements _Ready {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result init(_InitState value),
-    @required Result loading(_Loading value),
     @required Result ready(_Ready value),
   }) {
     assert(init != null);
-    assert(loading != null);
     assert(ready != null);
     return ready(this);
   }
@@ -694,7 +446,6 @@ class _$_Ready implements _Ready {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result init(_InitState value),
-    Result loading(_Loading value),
     Result ready(_Ready value),
     @required Result orElse(),
   }) {

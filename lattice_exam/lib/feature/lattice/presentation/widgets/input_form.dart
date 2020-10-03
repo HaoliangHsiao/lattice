@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lattice_exam/feature/lattice/presentation/bloc/input_bloc.dart';
 
 
 class InputForm extends StatefulWidget {
@@ -108,7 +110,8 @@ class _InputFormState extends State<InputForm> {
     );
   }
 
-  _gotoResultPage() {}
+  _gotoResultPage() {
+  }
   
   @override
   void dispose() {
