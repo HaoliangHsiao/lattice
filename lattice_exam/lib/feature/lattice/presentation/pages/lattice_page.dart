@@ -1,18 +1,18 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:lattice_exam/feature/lattice/presentation/widgets/lattice_col_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lattice_exam/feature/lattice/presentation/bloc/lattice_bloc.dart';
+import 'package:lattice_exam/feature/lattice/presentation/widgets/lattice_content_widget.dart';
 
 class LatticePage extends StatelessWidget {
   final int column;
   final int row;
-  final Point randomIndex;
 
   const LatticePage({
     Key key,
     this.column = 4,
     this.row = 1,
-    this.randomIndex,
   })  : assert(column > 0),
         assert(row > 0),
         super(key: key);
@@ -23,23 +23,24 @@ class LatticePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Lattice"),
       ),
-      body: Row(
-        children: getContent(column, row),
+      body: BlocProvider(
+        create: (context) => LatticeBloc()
+          ..add(
+            LatticeEvent.init(column, row),
+          ),
+        child: BlocBuilder<LatticeBloc, LatticeState>(
+          builder: (context, state) {
+            return state.map(
+              init: (_) => Container(),
+              update: (state) => LatticeContentWidget(
+                column: state.column,
+                row: state.row,
+                randomIndex: state.randomIndex,
+              ),
+            );
+          },
+        ),
       ),
     );
-  }
-
-  List<Widget> getContent(int column, int row) {
-    List<Widget> list = [];
-    for (int i = 0; i < column; i++) {
-      list.add(
-        Expanded(
-          child: LatticeColWidget(
-            row: row,
-          ),
-        ),
-      );
-    }
-    return list;
   }
 }
