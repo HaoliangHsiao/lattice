@@ -1,22 +1,20 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:lattice_exam/feature/lattice/domain/entities/lattice_content_data.dart';
 import 'package:lattice_exam/feature/lattice/domain/entities/select_index.dart';
 
+import 'lattice_alert_action.dart';
 import 'lattice_col_widget.dart';
 
 class LatticeContentWidget extends StatelessWidget {
-  final int column;
-  final int row;
-  final SelectIndex randomIndex;
+  final LatticeContentData data;
 
   LatticeContentWidget({
     Key key,
-    this.column = 4,
-    this.row = 1,
-    this.randomIndex = const SelectIndex(-1, -1),
-  })  : assert(column > 0),
-        assert(row > 0),
+    this.data,
+  })  : assert(data.column > 0),
+        assert(data.row > 0),
         super(key: key);
 
   @override
@@ -24,9 +22,12 @@ class LatticeContentWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Lattice"),
+        actions: [
+          LatticeAlertAction(),
+        ],
       ),
       body: Row(
-        children: getContent(column, row),
+        children: getContent(data.column, data.row),
       ),
     );
   }
@@ -38,7 +39,7 @@ class LatticeContentWidget extends StatelessWidget {
         Expanded(
           child: LatticeColWidget(
             row: row,
-            randomIndex: (randomIndex.column == i) ? randomIndex.row : -1,
+            randomIndex: (data.randomIndex.column == i) ? data.randomIndex.row : -1,
           ),
         ),
       );

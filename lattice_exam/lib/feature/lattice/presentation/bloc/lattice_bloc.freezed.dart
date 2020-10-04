@@ -25,6 +25,13 @@ class _$LatticeEventTearOff {
   _CleanRandom cleanRandom() {
     return const _CleanRandom();
   }
+
+// ignore: unused_element
+  _Alert alert(bool enable) {
+    return _Alert(
+      enable,
+    );
+  }
 }
 
 /// @nodoc
@@ -37,22 +44,26 @@ mixin _$LatticeEvent {
   Result when<Result extends Object>({
     @required Result init(int column, int row),
     @required Result cleanRandom(),
+    @required Result alert(bool enable),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result init(int column, int row),
     Result cleanRandom(),
+    Result alert(bool enable),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result init(_Init value),
     @required Result cleanRandom(_CleanRandom value),
+    @required Result alert(_Alert value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result init(_Init value),
     Result cleanRandom(_CleanRandom value),
+    Result alert(_Alert value),
     @required Result orElse(),
   });
 }
@@ -142,9 +153,11 @@ class _$_Init implements _Init {
   Result when<Result extends Object>({
     @required Result init(int column, int row),
     @required Result cleanRandom(),
+    @required Result alert(bool enable),
   }) {
     assert(init != null);
     assert(cleanRandom != null);
+    assert(alert != null);
     return init(column, row);
   }
 
@@ -153,6 +166,7 @@ class _$_Init implements _Init {
   Result maybeWhen<Result extends Object>({
     Result init(int column, int row),
     Result cleanRandom(),
+    Result alert(bool enable),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -167,9 +181,11 @@ class _$_Init implements _Init {
   Result map<Result extends Object>({
     @required Result init(_Init value),
     @required Result cleanRandom(_CleanRandom value),
+    @required Result alert(_Alert value),
   }) {
     assert(init != null);
     assert(cleanRandom != null);
+    assert(alert != null);
     return init(this);
   }
 
@@ -178,6 +194,7 @@ class _$_Init implements _Init {
   Result maybeMap<Result extends Object>({
     Result init(_Init value),
     Result cleanRandom(_CleanRandom value),
+    Result alert(_Alert value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -236,9 +253,11 @@ class _$_CleanRandom implements _CleanRandom {
   Result when<Result extends Object>({
     @required Result init(int column, int row),
     @required Result cleanRandom(),
+    @required Result alert(bool enable),
   }) {
     assert(init != null);
     assert(cleanRandom != null);
+    assert(alert != null);
     return cleanRandom();
   }
 
@@ -247,6 +266,7 @@ class _$_CleanRandom implements _CleanRandom {
   Result maybeWhen<Result extends Object>({
     Result init(int column, int row),
     Result cleanRandom(),
+    Result alert(bool enable),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -261,9 +281,11 @@ class _$_CleanRandom implements _CleanRandom {
   Result map<Result extends Object>({
     @required Result init(_Init value),
     @required Result cleanRandom(_CleanRandom value),
+    @required Result alert(_Alert value),
   }) {
     assert(init != null);
     assert(cleanRandom != null);
+    assert(alert != null);
     return cleanRandom(this);
   }
 
@@ -272,6 +294,7 @@ class _$_CleanRandom implements _CleanRandom {
   Result maybeMap<Result extends Object>({
     Result init(_Init value),
     Result cleanRandom(_CleanRandom value),
+    Result alert(_Alert value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -287,6 +310,124 @@ abstract class _CleanRandom implements LatticeEvent {
 }
 
 /// @nodoc
+abstract class _$AlertCopyWith<$Res> {
+  factory _$AlertCopyWith(_Alert value, $Res Function(_Alert) then) =
+      __$AlertCopyWithImpl<$Res>;
+  $Res call({bool enable});
+}
+
+/// @nodoc
+class __$AlertCopyWithImpl<$Res> extends _$LatticeEventCopyWithImpl<$Res>
+    implements _$AlertCopyWith<$Res> {
+  __$AlertCopyWithImpl(_Alert _value, $Res Function(_Alert) _then)
+      : super(_value, (v) => _then(v as _Alert));
+
+  @override
+  _Alert get _value => super._value as _Alert;
+
+  @override
+  $Res call({
+    Object enable = freezed,
+  }) {
+    return _then(_Alert(
+      enable == freezed ? _value.enable : enable as bool,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_Alert implements _Alert {
+  const _$_Alert(this.enable) : assert(enable != null);
+
+  @override
+  final bool enable;
+
+  @override
+  String toString() {
+    return 'LatticeEvent.alert(enable: $enable)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Alert &&
+            (identical(other.enable, enable) ||
+                const DeepCollectionEquality().equals(other.enable, enable)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(enable);
+
+  @override
+  _$AlertCopyWith<_Alert> get copyWith =>
+      __$AlertCopyWithImpl<_Alert>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result init(int column, int row),
+    @required Result cleanRandom(),
+    @required Result alert(bool enable),
+  }) {
+    assert(init != null);
+    assert(cleanRandom != null);
+    assert(alert != null);
+    return alert(enable);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result init(int column, int row),
+    Result cleanRandom(),
+    Result alert(bool enable),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (alert != null) {
+      return alert(enable);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result init(_Init value),
+    @required Result cleanRandom(_CleanRandom value),
+    @required Result alert(_Alert value),
+  }) {
+    assert(init != null);
+    assert(cleanRandom != null);
+    assert(alert != null);
+    return alert(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result init(_Init value),
+    Result cleanRandom(_CleanRandom value),
+    Result alert(_Alert value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (alert != null) {
+      return alert(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Alert implements LatticeEvent {
+  const factory _Alert(bool enable) = _$_Alert;
+
+  bool get enable;
+  _$AlertCopyWith<_Alert> get copyWith;
+}
+
+/// @nodoc
 class _$LatticeStateTearOff {
   const _$LatticeStateTearOff();
 
@@ -296,11 +437,9 @@ class _$LatticeStateTearOff {
   }
 
 // ignore: unused_element
-  _Update update(int column, int row, {SelectIndex randomIndex}) {
+  _Update update(LatticeContentData data) {
     return _Update(
-      column,
-      row,
-      randomIndex: randomIndex,
+      data,
     );
   }
 }
@@ -314,12 +453,12 @@ mixin _$LatticeState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result init(),
-    @required Result update(int column, int row, SelectIndex randomIndex),
+    @required Result update(LatticeContentData data),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result init(),
-    Result update(int column, int row, SelectIndex randomIndex),
+    Result update(LatticeContentData data),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -389,7 +528,7 @@ class _$_InitState implements _InitState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result init(),
-    @required Result update(int column, int row, SelectIndex randomIndex),
+    @required Result update(LatticeContentData data),
   }) {
     assert(init != null);
     assert(update != null);
@@ -400,7 +539,7 @@ class _$_InitState implements _InitState {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result init(),
-    Result update(int column, int row, SelectIndex randomIndex),
+    Result update(LatticeContentData data),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -444,7 +583,9 @@ abstract class _InitState implements LatticeState {
 abstract class _$UpdateCopyWith<$Res> {
   factory _$UpdateCopyWith(_Update value, $Res Function(_Update) then) =
       __$UpdateCopyWithImpl<$Res>;
-  $Res call({int column, int row, SelectIndex randomIndex});
+  $Res call({LatticeContentData data});
+
+  $LatticeContentDataCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -458,57 +599,47 @@ class __$UpdateCopyWithImpl<$Res> extends _$LatticeStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object column = freezed,
-    Object row = freezed,
-    Object randomIndex = freezed,
+    Object data = freezed,
   }) {
     return _then(_Update(
-      column == freezed ? _value.column : column as int,
-      row == freezed ? _value.row : row as int,
-      randomIndex: randomIndex == freezed
-          ? _value.randomIndex
-          : randomIndex as SelectIndex,
+      data == freezed ? _value.data : data as LatticeContentData,
     ));
+  }
+
+  @override
+  $LatticeContentDataCopyWith<$Res> get data {
+    if (_value.data == null) {
+      return null;
+    }
+    return $LatticeContentDataCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
   }
 }
 
 /// @nodoc
 class _$_Update implements _Update {
-  const _$_Update(this.column, this.row, {this.randomIndex})
-      : assert(column != null),
-        assert(row != null);
+  const _$_Update(this.data) : assert(data != null);
 
   @override
-  final int column;
-  @override
-  final int row;
-  @override
-  final SelectIndex randomIndex;
+  final LatticeContentData data;
 
   @override
   String toString() {
-    return 'LatticeState.update(column: $column, row: $row, randomIndex: $randomIndex)';
+    return 'LatticeState.update(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Update &&
-            (identical(other.column, column) ||
-                const DeepCollectionEquality().equals(other.column, column)) &&
-            (identical(other.row, row) ||
-                const DeepCollectionEquality().equals(other.row, row)) &&
-            (identical(other.randomIndex, randomIndex) ||
-                const DeepCollectionEquality()
-                    .equals(other.randomIndex, randomIndex)));
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(column) ^
-      const DeepCollectionEquality().hash(row) ^
-      const DeepCollectionEquality().hash(randomIndex);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
 
   @override
   _$UpdateCopyWith<_Update> get copyWith =>
@@ -518,23 +649,23 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result init(),
-    @required Result update(int column, int row, SelectIndex randomIndex),
+    @required Result update(LatticeContentData data),
   }) {
     assert(init != null);
     assert(update != null);
-    return update(column, row, randomIndex);
+    return update(data);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result init(),
-    Result update(int column, int row, SelectIndex randomIndex),
+    Result update(LatticeContentData data),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (update != null) {
-      return update(column, row, randomIndex);
+      return update(data);
     }
     return orElse();
   }
@@ -566,11 +697,8 @@ class _$_Update implements _Update {
 }
 
 abstract class _Update implements LatticeState {
-  const factory _Update(int column, int row, {SelectIndex randomIndex}) =
-      _$_Update;
+  const factory _Update(LatticeContentData data) = _$_Update;
 
-  int get column;
-  int get row;
-  SelectIndex get randomIndex;
+  LatticeContentData get data;
   _$UpdateCopyWith<_Update> get copyWith;
 }

@@ -30,9 +30,7 @@ class LatticePage extends StatelessWidget {
           return state.map(
             init: (_) => LatticeInitWidget(),
             update: (state) => LatticeContentWidget(
-              column: state.column,
-              row: state.row,
-              randomIndex: state.randomIndex,
+              data: state.data,
             ),
           );
         },
