@@ -23,7 +23,10 @@ class LatticeContentWidget extends StatelessWidget {
       appBar: AppBar(
         title: Text("Lattice"),
         actions: [
-          LatticeAlertAction(),
+          LatticeAlertAction(
+            enable: data.enableAlert,
+            text: data.alertText,
+          ),
         ],
       ),
       body: Row(

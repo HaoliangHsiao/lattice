@@ -30,7 +30,16 @@ class LatticeBloc extends Bloc<LatticeEvent, LatticeState> {
         randomIndex: SelectIndex(-1, -1),
       );
       yield LatticeState.update(_contentData);
-    }, alert: (_) async* {});
+    }, alert: (event) {
+      return handleAlert(event.enable);
+    });
+  }
+
+  Stream<LatticeState> handleAlert(bool enable) async* {
+    _contentData = _contentData.copyWith(
+      enableAlert: enable,
+    );
+    yield LatticeState.update(_contentData);
   }
 
   Stream<LatticeState> handleInit(int column, int row) async* {
