@@ -20,6 +20,11 @@ class _$LatticeEventTearOff {
       row,
     );
   }
+
+// ignore: unused_element
+  _CleanRandom cleanRandom() {
+    return const _CleanRandom();
+  }
 }
 
 /// @nodoc
@@ -28,29 +33,28 @@ const $LatticeEvent = _$LatticeEventTearOff();
 
 /// @nodoc
 mixin _$LatticeEvent {
-  int get column;
-  int get row;
-
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result init(int column, int row),
+    @required Result cleanRandom(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result init(int column, int row),
+    Result cleanRandom(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result init(_Init value),
+    @required Result cleanRandom(_CleanRandom value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result init(_Init value),
+    Result cleanRandom(_CleanRandom value),
     @required Result orElse(),
   });
-
-  $LatticeEventCopyWith<LatticeEvent> get copyWith;
 }
 
 /// @nodoc
@@ -58,7 +62,6 @@ abstract class $LatticeEventCopyWith<$Res> {
   factory $LatticeEventCopyWith(
           LatticeEvent value, $Res Function(LatticeEvent) then) =
       _$LatticeEventCopyWithImpl<$Res>;
-  $Res call({int column, int row});
 }
 
 /// @nodoc
@@ -68,24 +71,12 @@ class _$LatticeEventCopyWithImpl<$Res> implements $LatticeEventCopyWith<$Res> {
   final LatticeEvent _value;
   // ignore: unused_field
   final $Res Function(LatticeEvent) _then;
-
-  @override
-  $Res call({
-    Object column = freezed,
-    Object row = freezed,
-  }) {
-    return _then(_value.copyWith(
-      column: column == freezed ? _value.column : column as int,
-      row: row == freezed ? _value.row : row as int,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$InitCopyWith<$Res> implements $LatticeEventCopyWith<$Res> {
+abstract class _$InitCopyWith<$Res> {
   factory _$InitCopyWith(_Init value, $Res Function(_Init) then) =
       __$InitCopyWithImpl<$Res>;
-  @override
   $Res call({int column, int row});
 }
 
@@ -150,8 +141,10 @@ class _$_Init implements _Init {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result init(int column, int row),
+    @required Result cleanRandom(),
   }) {
     assert(init != null);
+    assert(cleanRandom != null);
     return init(column, row);
   }
 
@@ -159,6 +152,7 @@ class _$_Init implements _Init {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result init(int column, int row),
+    Result cleanRandom(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -172,8 +166,10 @@ class _$_Init implements _Init {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result init(_Init value),
+    @required Result cleanRandom(_CleanRandom value),
   }) {
     assert(init != null);
+    assert(cleanRandom != null);
     return init(this);
   }
 
@@ -181,6 +177,7 @@ class _$_Init implements _Init {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result init(_Init value),
+    Result cleanRandom(_CleanRandom value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -194,12 +191,99 @@ class _$_Init implements _Init {
 abstract class _Init implements LatticeEvent {
   const factory _Init(int column, int row) = _$_Init;
 
-  @override
   int get column;
-  @override
   int get row;
-  @override
   _$InitCopyWith<_Init> get copyWith;
+}
+
+/// @nodoc
+abstract class _$CleanRandomCopyWith<$Res> {
+  factory _$CleanRandomCopyWith(
+          _CleanRandom value, $Res Function(_CleanRandom) then) =
+      __$CleanRandomCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$CleanRandomCopyWithImpl<$Res> extends _$LatticeEventCopyWithImpl<$Res>
+    implements _$CleanRandomCopyWith<$Res> {
+  __$CleanRandomCopyWithImpl(
+      _CleanRandom _value, $Res Function(_CleanRandom) _then)
+      : super(_value, (v) => _then(v as _CleanRandom));
+
+  @override
+  _CleanRandom get _value => super._value as _CleanRandom;
+}
+
+/// @nodoc
+class _$_CleanRandom implements _CleanRandom {
+  const _$_CleanRandom();
+
+  @override
+  String toString() {
+    return 'LatticeEvent.cleanRandom()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _CleanRandom);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result init(int column, int row),
+    @required Result cleanRandom(),
+  }) {
+    assert(init != null);
+    assert(cleanRandom != null);
+    return cleanRandom();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result init(int column, int row),
+    Result cleanRandom(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (cleanRandom != null) {
+      return cleanRandom();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result init(_Init value),
+    @required Result cleanRandom(_CleanRandom value),
+  }) {
+    assert(init != null);
+    assert(cleanRandom != null);
+    return cleanRandom(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result init(_Init value),
+    Result cleanRandom(_CleanRandom value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (cleanRandom != null) {
+      return cleanRandom(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CleanRandom implements LatticeEvent {
+  const factory _CleanRandom() = _$_CleanRandom;
 }
 
 /// @nodoc

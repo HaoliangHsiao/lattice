@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lattice_exam/core/untils/text_utils.dart';
+import 'package:lattice_exam/feature/lattice/presentation/bloc/lattice_bloc.dart';
 
 class LatticeBtnWidget extends StatelessWidget {
   final bool enable;
@@ -18,7 +20,9 @@ class LatticeBtnWidget extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: (enable) ? _onTap : null,
+          onTap: () {
+            _onTap(context, enable);
+          },
           child: Container(
             margin: EdgeInsets.all(10),
             padding: EdgeInsets.all(10),
@@ -31,8 +35,12 @@ class LatticeBtnWidget extends StatelessWidget {
     );
   }
 
-  _onTap() {
-    print("on Tap");
+  _onTap(BuildContext context, bool enable) {
+    if(enable) {
+      BlocProvider.of<LatticeBloc>(context).add(LatticeEvent.cleanRandom());
+    } else {
+      return null;
+    }
   }
 
   BoxDecoration _getDecoration(bool enable) {
