@@ -32,6 +32,20 @@ class _$LatticeEventTearOff {
       enable,
     );
   }
+
+// ignore: unused_element
+  _Timer timer(String text) {
+    return _Timer(
+      text,
+    );
+  }
+
+// ignore: unused_element
+  _UpdateData updateData(LatticeContentData data) {
+    return _UpdateData(
+      data,
+    );
+  }
 }
 
 /// @nodoc
@@ -45,12 +59,16 @@ mixin _$LatticeEvent {
     @required Result init(int column, int row),
     @required Result cleanRandom(),
     @required Result alert(bool enable),
+    @required Result timer(String text),
+    @required Result updateData(LatticeContentData data),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result init(int column, int row),
     Result cleanRandom(),
     Result alert(bool enable),
+    Result timer(String text),
+    Result updateData(LatticeContentData data),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -58,12 +76,16 @@ mixin _$LatticeEvent {
     @required Result init(_Init value),
     @required Result cleanRandom(_CleanRandom value),
     @required Result alert(_Alert value),
+    @required Result timer(_Timer value),
+    @required Result updateData(_UpdateData value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result init(_Init value),
     Result cleanRandom(_CleanRandom value),
     Result alert(_Alert value),
+    Result timer(_Timer value),
+    Result updateData(_UpdateData value),
     @required Result orElse(),
   });
 }
@@ -154,10 +176,14 @@ class _$_Init implements _Init {
     @required Result init(int column, int row),
     @required Result cleanRandom(),
     @required Result alert(bool enable),
+    @required Result timer(String text),
+    @required Result updateData(LatticeContentData data),
   }) {
     assert(init != null);
     assert(cleanRandom != null);
     assert(alert != null);
+    assert(timer != null);
+    assert(updateData != null);
     return init(column, row);
   }
 
@@ -167,6 +193,8 @@ class _$_Init implements _Init {
     Result init(int column, int row),
     Result cleanRandom(),
     Result alert(bool enable),
+    Result timer(String text),
+    Result updateData(LatticeContentData data),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -182,10 +210,14 @@ class _$_Init implements _Init {
     @required Result init(_Init value),
     @required Result cleanRandom(_CleanRandom value),
     @required Result alert(_Alert value),
+    @required Result timer(_Timer value),
+    @required Result updateData(_UpdateData value),
   }) {
     assert(init != null);
     assert(cleanRandom != null);
     assert(alert != null);
+    assert(timer != null);
+    assert(updateData != null);
     return init(this);
   }
 
@@ -195,6 +227,8 @@ class _$_Init implements _Init {
     Result init(_Init value),
     Result cleanRandom(_CleanRandom value),
     Result alert(_Alert value),
+    Result timer(_Timer value),
+    Result updateData(_UpdateData value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -254,10 +288,14 @@ class _$_CleanRandom implements _CleanRandom {
     @required Result init(int column, int row),
     @required Result cleanRandom(),
     @required Result alert(bool enable),
+    @required Result timer(String text),
+    @required Result updateData(LatticeContentData data),
   }) {
     assert(init != null);
     assert(cleanRandom != null);
     assert(alert != null);
+    assert(timer != null);
+    assert(updateData != null);
     return cleanRandom();
   }
 
@@ -267,6 +305,8 @@ class _$_CleanRandom implements _CleanRandom {
     Result init(int column, int row),
     Result cleanRandom(),
     Result alert(bool enable),
+    Result timer(String text),
+    Result updateData(LatticeContentData data),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -282,10 +322,14 @@ class _$_CleanRandom implements _CleanRandom {
     @required Result init(_Init value),
     @required Result cleanRandom(_CleanRandom value),
     @required Result alert(_Alert value),
+    @required Result timer(_Timer value),
+    @required Result updateData(_UpdateData value),
   }) {
     assert(init != null);
     assert(cleanRandom != null);
     assert(alert != null);
+    assert(timer != null);
+    assert(updateData != null);
     return cleanRandom(this);
   }
 
@@ -295,6 +339,8 @@ class _$_CleanRandom implements _CleanRandom {
     Result init(_Init value),
     Result cleanRandom(_CleanRandom value),
     Result alert(_Alert value),
+    Result timer(_Timer value),
+    Result updateData(_UpdateData value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -369,10 +415,14 @@ class _$_Alert implements _Alert {
     @required Result init(int column, int row),
     @required Result cleanRandom(),
     @required Result alert(bool enable),
+    @required Result timer(String text),
+    @required Result updateData(LatticeContentData data),
   }) {
     assert(init != null);
     assert(cleanRandom != null);
     assert(alert != null);
+    assert(timer != null);
+    assert(updateData != null);
     return alert(enable);
   }
 
@@ -382,6 +432,8 @@ class _$_Alert implements _Alert {
     Result init(int column, int row),
     Result cleanRandom(),
     Result alert(bool enable),
+    Result timer(String text),
+    Result updateData(LatticeContentData data),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -397,10 +449,14 @@ class _$_Alert implements _Alert {
     @required Result init(_Init value),
     @required Result cleanRandom(_CleanRandom value),
     @required Result alert(_Alert value),
+    @required Result timer(_Timer value),
+    @required Result updateData(_UpdateData value),
   }) {
     assert(init != null);
     assert(cleanRandom != null);
     assert(alert != null);
+    assert(timer != null);
+    assert(updateData != null);
     return alert(this);
   }
 
@@ -410,6 +466,8 @@ class _$_Alert implements _Alert {
     Result init(_Init value),
     Result cleanRandom(_CleanRandom value),
     Result alert(_Alert value),
+    Result timer(_Timer value),
+    Result updateData(_UpdateData value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -425,6 +483,280 @@ abstract class _Alert implements LatticeEvent {
 
   bool get enable;
   _$AlertCopyWith<_Alert> get copyWith;
+}
+
+/// @nodoc
+abstract class _$TimerCopyWith<$Res> {
+  factory _$TimerCopyWith(_Timer value, $Res Function(_Timer) then) =
+      __$TimerCopyWithImpl<$Res>;
+  $Res call({String text});
+}
+
+/// @nodoc
+class __$TimerCopyWithImpl<$Res> extends _$LatticeEventCopyWithImpl<$Res>
+    implements _$TimerCopyWith<$Res> {
+  __$TimerCopyWithImpl(_Timer _value, $Res Function(_Timer) _then)
+      : super(_value, (v) => _then(v as _Timer));
+
+  @override
+  _Timer get _value => super._value as _Timer;
+
+  @override
+  $Res call({
+    Object text = freezed,
+  }) {
+    return _then(_Timer(
+      text == freezed ? _value.text : text as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_Timer implements _Timer {
+  const _$_Timer(this.text) : assert(text != null);
+
+  @override
+  final String text;
+
+  @override
+  String toString() {
+    return 'LatticeEvent.timer(text: $text)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Timer &&
+            (identical(other.text, text) ||
+                const DeepCollectionEquality().equals(other.text, text)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(text);
+
+  @override
+  _$TimerCopyWith<_Timer> get copyWith =>
+      __$TimerCopyWithImpl<_Timer>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result init(int column, int row),
+    @required Result cleanRandom(),
+    @required Result alert(bool enable),
+    @required Result timer(String text),
+    @required Result updateData(LatticeContentData data),
+  }) {
+    assert(init != null);
+    assert(cleanRandom != null);
+    assert(alert != null);
+    assert(timer != null);
+    assert(updateData != null);
+    return timer(text);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result init(int column, int row),
+    Result cleanRandom(),
+    Result alert(bool enable),
+    Result timer(String text),
+    Result updateData(LatticeContentData data),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (timer != null) {
+      return timer(text);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result init(_Init value),
+    @required Result cleanRandom(_CleanRandom value),
+    @required Result alert(_Alert value),
+    @required Result timer(_Timer value),
+    @required Result updateData(_UpdateData value),
+  }) {
+    assert(init != null);
+    assert(cleanRandom != null);
+    assert(alert != null);
+    assert(timer != null);
+    assert(updateData != null);
+    return timer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result init(_Init value),
+    Result cleanRandom(_CleanRandom value),
+    Result alert(_Alert value),
+    Result timer(_Timer value),
+    Result updateData(_UpdateData value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (timer != null) {
+      return timer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Timer implements LatticeEvent {
+  const factory _Timer(String text) = _$_Timer;
+
+  String get text;
+  _$TimerCopyWith<_Timer> get copyWith;
+}
+
+/// @nodoc
+abstract class _$UpdateDataCopyWith<$Res> {
+  factory _$UpdateDataCopyWith(
+          _UpdateData value, $Res Function(_UpdateData) then) =
+      __$UpdateDataCopyWithImpl<$Res>;
+  $Res call({LatticeContentData data});
+
+  $LatticeContentDataCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class __$UpdateDataCopyWithImpl<$Res> extends _$LatticeEventCopyWithImpl<$Res>
+    implements _$UpdateDataCopyWith<$Res> {
+  __$UpdateDataCopyWithImpl(
+      _UpdateData _value, $Res Function(_UpdateData) _then)
+      : super(_value, (v) => _then(v as _UpdateData));
+
+  @override
+  _UpdateData get _value => super._value as _UpdateData;
+
+  @override
+  $Res call({
+    Object data = freezed,
+  }) {
+    return _then(_UpdateData(
+      data == freezed ? _value.data : data as LatticeContentData,
+    ));
+  }
+
+  @override
+  $LatticeContentDataCopyWith<$Res> get data {
+    if (_value.data == null) {
+      return null;
+    }
+    return $LatticeContentDataCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
+  }
+}
+
+/// @nodoc
+class _$_UpdateData implements _UpdateData {
+  const _$_UpdateData(this.data) : assert(data != null);
+
+  @override
+  final LatticeContentData data;
+
+  @override
+  String toString() {
+    return 'LatticeEvent.updateData(data: $data)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _UpdateData &&
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
+
+  @override
+  _$UpdateDataCopyWith<_UpdateData> get copyWith =>
+      __$UpdateDataCopyWithImpl<_UpdateData>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result init(int column, int row),
+    @required Result cleanRandom(),
+    @required Result alert(bool enable),
+    @required Result timer(String text),
+    @required Result updateData(LatticeContentData data),
+  }) {
+    assert(init != null);
+    assert(cleanRandom != null);
+    assert(alert != null);
+    assert(timer != null);
+    assert(updateData != null);
+    return updateData(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result init(int column, int row),
+    Result cleanRandom(),
+    Result alert(bool enable),
+    Result timer(String text),
+    Result updateData(LatticeContentData data),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (updateData != null) {
+      return updateData(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result init(_Init value),
+    @required Result cleanRandom(_CleanRandom value),
+    @required Result alert(_Alert value),
+    @required Result timer(_Timer value),
+    @required Result updateData(_UpdateData value),
+  }) {
+    assert(init != null);
+    assert(cleanRandom != null);
+    assert(alert != null);
+    assert(timer != null);
+    assert(updateData != null);
+    return updateData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result init(_Init value),
+    Result cleanRandom(_CleanRandom value),
+    Result alert(_Alert value),
+    Result timer(_Timer value),
+    Result updateData(_UpdateData value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (updateData != null) {
+      return updateData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateData implements LatticeEvent {
+  const factory _UpdateData(LatticeContentData data) = _$_UpdateData;
+
+  LatticeContentData get data;
+  _$UpdateDataCopyWith<_UpdateData> get copyWith;
 }
 
 /// @nodoc
