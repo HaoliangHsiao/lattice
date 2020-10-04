@@ -23,7 +23,7 @@ class LatticeBtnWidget extends StatelessWidget {
 
   static Size getNeedWidgetSize() {
     Size textSize = getTextSize("確定", TextStyle());
-    double width = textSize.width + 20 + 20;
+    double width = textSize.width + 20 + 20 + 2;
     double height = textSize.height + 20 + 20 + 10;
     return Size(width,height);
   }

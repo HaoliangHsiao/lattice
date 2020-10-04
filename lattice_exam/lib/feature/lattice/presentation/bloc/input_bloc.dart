@@ -1,8 +1,12 @@
 
 
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:lattice_exam/feature/lattice/presentation/widgets/lattice_btn_widget.dart';
+import 'package:lattice_exam/feature/lattice/presentation/widgets/lattice_cell_widget.dart';
 
 part 'input_bloc.freezed.dart';
 part 'input_event.dart';
@@ -22,18 +26,15 @@ class InputBloc extends Bloc<InputEvent, InputState> {
   }
 
   Stream<InputState> handleInit(Size screenSize) async*{
-    Size randomTextSize = _textSize("random", TextStyle());
-    Size btnTextSize = _textSize("確定", TextStyle());
+    Size cellWidgetSize = LatticeCellWidget.getNeedWidgetSize();
+    Size btnWidgetSize = LatticeBtnWidget.getNeedWidgetSize();
 
-    yield InputState.ready(10, 10);
-  }
+    double maxWidth = max(cellWidgetSize.width, btnWidgetSize.width);
+    double maxHeight = max(cellWidgetSize.height, btnWidgetSize.height);
 
+    int maxColumn = screenSize.width ~/ maxWidth;
+    int maxRow = screenSize.height ~/ maxHeight - 1; // 包含Button的位置
 
-
-  Size _textSize(String text, TextStyle style) {
-    final TextPainter textPainter = TextPainter(
-        text: TextSpan(text: text, style: style), maxLines: 1, textDirection: TextDirection.ltr)
-      ..layout(minWidth: 0, maxWidth: double.infinity);
-    return textPainter.size;
+    yield InputState.ready(maxColumn, maxRow);
   }
 }

@@ -19,7 +19,10 @@ class InputPage extends StatelessWidget {
           builder: (context, state) {
             return state.map(
                 init: (_) => InitWidget(),
-                ready: (state) => InputWidget());
+                ready: (state) => InputWidget(
+                  maxColumn: state.maxColumn,
+                  maxRow: state.maxRow,
+                ));
           },
         ),
       ),
