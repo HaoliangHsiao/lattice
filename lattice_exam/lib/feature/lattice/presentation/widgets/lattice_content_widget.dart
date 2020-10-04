@@ -1,5 +1,3 @@
-
-
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -22,8 +20,13 @@ class LatticeContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: getContent(column, row),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Lattice"),
+      ),
+      body: Row(
+        children: getContent(column, row),
+      ),
     );
   }
 
@@ -39,4 +42,5 @@ class LatticeContentWidget extends StatelessWidget {
       );
     }
     return list;
-  }}
+  }
+}

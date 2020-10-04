@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lattice_exam/feature/lattice/presentation/bloc/lattice_bloc.dart';
 import 'package:lattice_exam/feature/lattice/presentation/widgets/lattice_content_widget.dart';
+import 'package:lattice_exam/feature/lattice/presentation/widgets/lattice_init_widget.dart';
 
 class LatticePage extends StatelessWidget {
   final int column;
@@ -19,27 +20,22 @@ class LatticePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Lattice"),
-      ),
-      body: BlocProvider(
-        create: (context) => LatticeBloc()
-          ..add(
-            LatticeEvent.init(column, row),
-          ),
-        child: BlocBuilder<LatticeBloc, LatticeState>(
-          builder: (context, state) {
-            return state.map(
-              init: (_) => Container(),
-              update: (state) => LatticeContentWidget(
-                column: state.column,
-                row: state.row,
-                randomIndex: state.randomIndex,
-              ),
-            );
-          },
+    return BlocProvider(
+      create: (context) => LatticeBloc()
+        ..add(
+          LatticeEvent.init(column, row),
         ),
+      child: BlocBuilder<LatticeBloc, LatticeState>(
+        builder: (context, state) {
+          return state.map(
+            init: (_) => LatticeInitWidget(),
+            update: (state) => LatticeContentWidget(
+              column: state.column,
+              row: state.row,
+              randomIndex: state.randomIndex,
+            ),
+          );
+        },
       ),
     );
   }
