@@ -212,7 +212,7 @@ class _$LatticeStateTearOff {
   }
 
 // ignore: unused_element
-  _Update update(int column, int row, {Point<num> randomIndex}) {
+  _Update update(int column, int row, {SelectIndex randomIndex}) {
     return _Update(
       column,
       row,
@@ -230,12 +230,12 @@ mixin _$LatticeState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result init(),
-    @required Result update(int column, int row, Point<num> randomIndex),
+    @required Result update(int column, int row, SelectIndex randomIndex),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result init(),
-    Result update(int column, int row, Point<num> randomIndex),
+    Result update(int column, int row, SelectIndex randomIndex),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -305,7 +305,7 @@ class _$_InitState implements _InitState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result init(),
-    @required Result update(int column, int row, Point<num> randomIndex),
+    @required Result update(int column, int row, SelectIndex randomIndex),
   }) {
     assert(init != null);
     assert(update != null);
@@ -316,7 +316,7 @@ class _$_InitState implements _InitState {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result init(),
-    Result update(int column, int row, Point<num> randomIndex),
+    Result update(int column, int row, SelectIndex randomIndex),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -360,7 +360,7 @@ abstract class _InitState implements LatticeState {
 abstract class _$UpdateCopyWith<$Res> {
   factory _$UpdateCopyWith(_Update value, $Res Function(_Update) then) =
       __$UpdateCopyWithImpl<$Res>;
-  $Res call({int column, int row, Point<num> randomIndex});
+  $Res call({int column, int row, SelectIndex randomIndex});
 }
 
 /// @nodoc
@@ -383,7 +383,7 @@ class __$UpdateCopyWithImpl<$Res> extends _$LatticeStateCopyWithImpl<$Res>
       row == freezed ? _value.row : row as int,
       randomIndex: randomIndex == freezed
           ? _value.randomIndex
-          : randomIndex as Point<num>,
+          : randomIndex as SelectIndex,
     ));
   }
 }
@@ -399,7 +399,7 @@ class _$_Update implements _Update {
   @override
   final int row;
   @override
-  final Point<num> randomIndex;
+  final SelectIndex randomIndex;
 
   @override
   String toString() {
@@ -434,7 +434,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result init(),
-    @required Result update(int column, int row, Point<num> randomIndex),
+    @required Result update(int column, int row, SelectIndex randomIndex),
   }) {
     assert(init != null);
     assert(update != null);
@@ -445,7 +445,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result init(),
-    Result update(int column, int row, Point<num> randomIndex),
+    Result update(int column, int row, SelectIndex randomIndex),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -482,11 +482,11 @@ class _$_Update implements _Update {
 }
 
 abstract class _Update implements LatticeState {
-  const factory _Update(int column, int row, {Point<num> randomIndex}) =
+  const factory _Update(int column, int row, {SelectIndex randomIndex}) =
       _$_Update;
 
   int get column;
   int get row;
-  Point<num> get randomIndex;
+  SelectIndex get randomIndex;
   _$UpdateCopyWith<_Update> get copyWith;
 }

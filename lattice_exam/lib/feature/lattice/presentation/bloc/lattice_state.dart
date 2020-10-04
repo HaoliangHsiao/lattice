@@ -7,6 +7,6 @@ abstract class LatticeState with _$LatticeState {
   const factory LatticeState.update(
     int column,
     int row, {
-    Point randomIndex,
+    SelectIndex randomIndex,
   }) = _Update;
 }

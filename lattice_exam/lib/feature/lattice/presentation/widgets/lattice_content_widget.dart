@@ -1,19 +1,20 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:lattice_exam/feature/lattice/domain/entities/select_index.dart';
 
 import 'lattice_col_widget.dart';
 
 class LatticeContentWidget extends StatelessWidget {
   final int column;
   final int row;
-  final Point randomIndex;
+  final SelectIndex randomIndex;
 
-  const LatticeContentWidget({
+  LatticeContentWidget({
     Key key,
     this.column = 4,
     this.row = 1,
-    this.randomIndex,
+    this.randomIndex = const SelectIndex(-1, -1),
   })  : assert(column > 0),
         assert(row > 0),
         super(key: key);
@@ -37,6 +38,7 @@ class LatticeContentWidget extends StatelessWidget {
         Expanded(
           child: LatticeColWidget(
             row: row,
+            randomIndex: (randomIndex.column == i) ? randomIndex.row : -1,
           ),
         ),
       );

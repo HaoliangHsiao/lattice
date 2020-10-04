@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:lattice_exam/feature/lattice/domain/entities/select_index.dart';
 
 part 'lattice_bloc.freezed.dart';
 part 'lattice_event.dart';
@@ -18,6 +19,6 @@ class LatticeBloc extends Bloc<LatticeEvent, LatticeState> {
   }
 
   Stream<LatticeState> handleInit(int column, int row) async*{
-    yield LatticeState.update(column, row);
+    yield LatticeState.update(column, row, randomIndex: SelectIndex(-1,-1));
   }
 }
