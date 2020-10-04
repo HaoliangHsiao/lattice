@@ -20,9 +20,9 @@ class LatticeBtnWidget extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: () {
-            _onTap(context, enable);
-          },
+          onTap: (enable) ? () {
+            _onTap(context);
+          } : null,
           child: Container(
             margin: EdgeInsets.all(10),
             padding: EdgeInsets.all(10),
@@ -35,12 +35,8 @@ class LatticeBtnWidget extends StatelessWidget {
     );
   }
 
-  _onTap(BuildContext context, bool enable) {
-    if(enable) {
-      BlocProvider.of<LatticeBloc>(context).add(LatticeEvent.cleanRandom());
-    } else {
-      return null;
-    }
+  _onTap(BuildContext context) {
+    BlocProvider.of<LatticeBloc>(context).add(LatticeEvent.cleanRandom());
   }
 
   BoxDecoration _getDecoration(bool enable) {
