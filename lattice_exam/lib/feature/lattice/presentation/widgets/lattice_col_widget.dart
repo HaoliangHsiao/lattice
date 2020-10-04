@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'lattice_btn_widget.dart';
 import 'lattice_cell_widget.dart';
 
 class LatticeColWidget extends StatelessWidget {
@@ -38,26 +39,8 @@ class LatticeColWidget extends StatelessWidget {
       );
     }
 
-    list.add(Expanded(child: _btnWidget()));
+    list.add(Expanded(child: LatticeBtnWidget()));
 
     return list;
-  }
-
-  Widget _btnWidget() {
-    return Container(
-      width: double.infinity,
-      color: Colors.black,
-      margin: EdgeInsets.only(top: 10),
-      child: Container(
-        margin: EdgeInsets.all(10),
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          border: Border.all(color: Color(0x48ffffff), width: 1),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        alignment: Alignment.bottomCenter,
-        child: Text("確定", style: TextStyle(color: Colors.white)),
-      ),
-    );
   }
 }
