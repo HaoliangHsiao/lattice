@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lattice_exam/core/untils/text_utils.dart';
 
 import 'lattice_cell_decoration.dart';
 
@@ -26,5 +27,12 @@ class LatticeCellWidget extends StatelessWidget {
       alignment: Alignment.center,
       child: Text(text),
     );
+  }
+
+  static Size getNeedWidgetSize() {
+    Size textSize = getTextSize("random", TextStyle());
+    double width = textSize.width + 1 + 1;
+    double height = textSize.height + 10 + 10;
+    return Size(width,height);
   }
 }
