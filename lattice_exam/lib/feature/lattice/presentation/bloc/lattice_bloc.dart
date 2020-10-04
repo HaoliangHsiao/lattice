@@ -11,6 +11,8 @@ part 'lattice_state.dart';
 class LatticeBloc extends Bloc<LatticeEvent, LatticeState> {
   LatticeBloc() : super(LatticeState.init());
 
+  SelectIndex _currentSelectIndex = SelectIndex(-1,-1);
+
   @override
   Stream<LatticeState> mapEventToState(LatticeEvent event) async* {
     yield* event.map(init: (event) {
@@ -19,6 +21,6 @@ class LatticeBloc extends Bloc<LatticeEvent, LatticeState> {
   }
 
   Stream<LatticeState> handleInit(int column, int row) async*{
-    yield LatticeState.update(column, row, randomIndex: SelectIndex(-1,-1));
+    yield LatticeState.update(column, row, randomIndex: _currentSelectIndex);
   }
 }
