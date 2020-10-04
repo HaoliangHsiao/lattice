@@ -10,7 +10,8 @@ class LatticeColWidget extends StatelessWidget {
     Key key,
     this.row = 1,
     this.randomIndex = -1,
-  }) : super(key: key);
+  })  : assert(row > 0),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
